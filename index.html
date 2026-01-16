@@ -1,261 +1,334 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tabela de Serviços - Pintura Hidro Arts</title>
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #ffffff;
-      color: #000;
-      margin: 0;
-      padding: 0;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pintura Hidro Arts</title>
 
-    header {
-      background-color: #66b2ff;
-      padding: 15px;
-      text-align: center;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
+<style>
+:root {
+    --blue: #1E90FF;
+    --yellow: #FFD700;
+    --bg: #f5f7fa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    color: #333;
+}
+
+header {
+    background: var(--blue);
+    color: white;
+    text-align: center;
+    padding: 30px 15px;
+}
+
+header h1 {
+    font-size: 2.2rem;
+}
+
+.subtitle {
+    margin-top: 6px;
+    font-weight: 300;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 15px;
+}
+
+.services-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 18px;
+}
+
+.services-table th {
+    background: var(--blue);
+    color: white;
+    padding: 15px;
+    text-align: left;
+}
+
+.services-table td {
+    padding: 20px;
+    vertical-align: top;
+}
+
+.services-table tbody tr {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 8px 14px rgba(0,0,0,0.12);
+    border-bottom: 1px solid var(--yellow);
+    transition: all 0.3s ease;
+}
+
+.services-table tbody tr:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 18px rgba(255,215,0,0.25);
+    background: #fffef6;
+}
+
+.services-table tbody tr td:first-child {
+    border-top-left-radius: 14px;
+    border-bottom-left-radius: 14px;
+}
+
+.services-table tbody tr td:last-child {
+    border-top-right-radius: 14px;
+    border-bottom-right-radius: 14px;
+}
+
+.service-name {
+    font-weight: 600;
+    color: var(--blue);
+    border-left: 4px solid var(--yellow);
+    padding-left: 10px;
+    font-size: 1.05rem;
+}
+
+.service-function {
+    color: #555;
+    margin-top: 6px;
+    line-height: 1.5;
+}
+
+.obs {
+    margin-top: 25px;
+    font-size: 0.8rem;
+    color: #666;
+    text-align: center;
+    padding: 0 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 25px 10px;
+    margin-top: 40px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
     header h1 {
-      color: #ffffff;
-      font-size: 1.8em;
-      margin: 0;
+        font-size: 1.9rem;
     }
 
-    header h2 {
-      color: #0056b3;
-      font-size: 1.1em;
-      font-weight: 700;
-      margin-top: 3px;
+    .service-name {
+        font-size: 1rem;
     }
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 15px 5px;
-      max-width: 100%;
-      margin: auto;
+    .services-table td {
+        padding: 18px;
     }
-
-    .servico {
-      background-color: #fff;
-      border: 2px solid #007bff;
-      border-radius: 10px;
-      padding: 10px;
-      margin-bottom: 10px;
-      width: 100%;
-      box-sizing: border-box;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .servico:hover {
-      transform: translateY(-3px);
-      box-shadow: 3px 3px 5px rgba(86, 154, 223, 0.8);
-    }
-
-    .servico h3 {
-      color: #0056b3;
-      font-size: 1.05em;
-      margin-bottom: 4px;
-    }
-
-    .servico p, .servico ul {
-      font-size: 1.1em; /* maior para leitura confortável */
-      line-height: 1.6;
-      color: #333;
-      text-align: justify;
-    }
-
-    .servico ul {
-      padding-left: 15px;
-    }
-
-    .observacao {
-      text-align: center;
-      margin: 15px 0;
-      font-size: 0.9em;
-      color: #555;
-    }
-
-    footer {
-      text-align: center;
-      background-color: #66b2ff;
-      color: white;
-      padding: 12px;
-      margin-top: 20px;
-      font-size: 0.9em;
-    }
-
-    footer a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* Responsividade extra para telas pequenas */
-    @media (max-width: 500px) {
-      .servico {
-        padding: 8px;
-      }
-      .servico h3 {
-        font-size: 1em;
-      }
-      .servico p, .servico ul {
-        font-size: 1em; /* maior no celular também */
-        line-height: 1.5;
-      }
-    }
-  </style>
+}
+</style>
 </head>
+
 <body>
 
-  <header>
-    <h1>TABELA DE SERVIÇOS</h1>
-    <h2>PINTURA HIDRO ARTS</h2>
-  </header>
+<header>
+    <h1>PINTURA HIDRO ARTS</h1>
+    <p class="subtitle">Confira os nossos serviços!</p>
+</header>
 
-  <div class="container">
-    <!-- Blocos de serviços (29) -->
-    <div class="servico">
-      <h3>Lavagem Simples</h3>
-      <p>Limpeza com luva e pano de microfibra, pré-lavagem para evitar riscos, shampoo automotivo, pretinho nos pneus, aspiração interna com limpeza bactericida e cheirinho. Deixa o carro limpo, higienizado e com brilho renovado.</p>
-    </div>
-    <div class="servico">
-      <h3>Lavagem Técnica</h3>
-      <p>Inclui pré-lavagem, shampoo automotivo, limpeza detalhada de pneus, descontaminação ferrosa, aspiração interna com limpeza bactericida, revitalização e hidratação dos plásticos, e cera de proteção de três meses.</p>
-    </div>
-    <div class="servico">
-      <h3>Higienização Simples</h3>
-      <p>Limpeza interna detalhada com escovação de bancos, painel, teto, carpete e portas, usando produto antibactericida e aspirador. Não desmonta o carro. Finaliza com aromatizante, deixando o interior limpo e saudável.</p>
-    </div>
-    <div class="servico">
-      <h3>Higienização Plus</h3>
-      <p>Limpeza completa interna com escovação, aspirador, desmontagem interna do carro, proteção dos plásticos e uso de vapor para eliminar fungos, bactérias e odores, finalizando com aromatizante.</p>
-    </div>
-    <div class="servico">
-      <h3>Higienização de Motor</h3>
-      <p>Limpeza detalhada do motor com aplicação de verniz de proteção.</p>
-    </div>
-    <div class="servico">
-      <h3>Higienização Interna do Carro, Parte por Parte</h3>
-      <ul>
-        <li><strong>Teto:</strong> limpeza detalhada</li>
-        <li><strong>Carpete:</strong> limpeza detalhada ou removendo o carpete</li>
-        <li><strong>Plásticos:</strong> portas, colunas e painel</li>
-        <li><strong>Bancos:</strong> motorista e passageiros</li>
-      </ul>
-    </div>
-    <div class="servico">
-      <h3>Higienização de Rodas</h3>
-      <p>Limpeza detalhada das rodas, removendo sujeira e resíduos acumulados.</p>
-    </div>
-    <div class="servico">
-      <h3>Pretinho</h3>
-      <p>Aplicação de pretinho nos pneus, com remoção de graxa ou lama pesada quando necessário, proporcionando acabamento limpo e visual renovado.</p>
-    </div>
-    <div class="servico">
-      <h3>Micro Pintura</h3>
-      <p>Retoque pontual de pintura em pequenas áreas, ideal para eliminar riscos leves ou manchas sem precisar repintar a peça inteira, preservando o acabamento original.</p>
-    </div>
-    <div class="servico">
-      <h3>Pintura Completa Carro + Polimento</h3>
-      <p>Serviço completo de pintura de carro, portas, para-lamas, para-choques, capô, teto, porta-malas e peças internas, incluindo polimento para uniformidade e acabamento de alta qualidade.</p>
-    </div>
-    <div class="servico">
-      <h3>Restauração de Plástico</h3>
-      <p>Limpeza e descontaminação de plásticos internos e externos, aplicação de produto restaurador e vitrificação, garantindo proteção e renovação por um ano.</p>
-    </div>
-    <div class="servico">
-      <h3>Restauração de Vidros</h3>
-      <p>Limpeza completa de todos os vidros com descontaminador de chuva ácida, proteção e acabamento interno e externo.</p>
-    </div>
-    <div class="servico">
-      <h3>Pintura de Rodas (Caminhão, Carretas)</h3>
-      <p>Pintura completa ou parcial das rodas, incluindo aro, cubo e personalizações, podendo restaurar o padrão original ou aplicar cores personalizadas, garantindo acabamento uniforme, proteção e aparência profissional.</p>
-    </div>
-    <div class="servico">
-      <h3>Vitrificação de Farol</h3>
-      <p>Polimento da lente e aplicação de proteção vitrificante, garantindo durabilidade e proteção de um ano.</p>
-    </div>
-    <div class="servico">
-      <h3>Restauração de Farol</h3>
-      <p>Lixamento progressivo da lente, isolamento e aplicação de proteção vitrificante, com garantia de um ano.</p>
-    </div>
-    <div class="servico">
-      <h3>Restauração de Farol com Polimento</h3>
-      <p>Lixamento progressivo e polimento do farol, isolamento e aplicação de polímero, com três anos de proteção.</p>
-    </div>
-    <div class="servico">
-      <h3>Polimento de Rapatema (Casca de Laranja)</h3>
-      <p>Lixamento progressivo, polimento técnico de todas as chapas, isolamento das borrachas e aplicação de selante com proteção de um ano, lavagem simples incluída.</p>
-    </div>
-    <div class="servico">
-      <h3>Polimento Tanques</h3>
-      <p>Polimento completo de tanques usando máquina e, quando necessário, Bombril, garantindo superfícies limpas e uniformes. Também é possível aplicar pintura de cinta no tanque.</p>
-    </div>
-    <div class="servico">
-      <h3>Polimento Espelhado Fora do Lugar</h3>
-      <p>Tratamento de desgaste do alumínio com máquina, realizado fora da posição original do tanque, proporcionando acabamento espelhado e superfície uniforme.</p>
-    </div>
-    <div class="servico">
-      <h3>Polimento Espelhado no Lugar</h3>
-      <p>Desgaste do alumínio tratado com máquina, mantendo o tanque no local, ideal para recuperação de brilho sem remoção da peça.</p>
-    </div>
-    <div class="servico">
-      <h3>Polimento Caminhão</h3>
-      <p>Acabamento de superfícies de caminhões, incluindo lixamento quando necessário, aplicação de cera e polimento de áreas foscas, garantindo brilho uniforme e renovação da pintura.</p>
-    </div>
-    <div class="servico">
-      <h3>Polimento Alumínio</h3>
-      <p>Polimento detalhado de suportes de alumínio, tampas de mala e descarga, usando máquina, lixamento ou Bombril conforme a necessidade, garantindo acabamento liso e brilho uniforme.</p>
-    </div>
-    <div class="servico">
-      <h3>Polimento Rodas Alumínio</h3>
-      <p>Polimento das rodas com máquina, à mão ou usando Bombril e lixa, incluindo restauração da roda espelhada, proporcionando brilho, proteção e aparência renovada.</p>
-    </div>
-    <div class="servico">
-      <h3>Polimento Carreta</h3>
-      <p>Polimento completo de carretas, cobrindo tetos altos e baixos, bicudas e novas superfícies. Inclui lixamento quando necessário e aplicação de cera, garantindo brilho uniforme e renovação da pintura.</p>
-    </div>
-    <div class="servico">
-      <h3>Polimento Comercial One Step</h3>
-      <p>Lavagem, descontaminação com clay bar, polimento de uma etapa que remove 50% dos riscos, e aplicação de hidrorepelente com proteção de seis meses.</p>
-    </div>
-    <div class="servico">
-      <h3>Polimento Comercial Silitização</h3>
-      <p>Lavagem, descontaminação com clay bar, polimento de uma etapa removendo 50% dos riscos, proteção com hidrorepelente de um ano e isolamento das borrachas.</p>
-    </div>
-    <div class="servico">
-      <h3>Polimento Técnico e Vitrificação</h3>
-      <p>Lavagem simples, descontaminação, polimento em três etapas removendo 100% dos riscos, lixamento para arranhões profundos, isolamento de borrachas e vidros, e vitrificação com proteção de um ano.</p>
-    </div>
-    <div class="servico">
-      <h3>Polimento Técnico e Vitrificação PRO 9H3Y</h3>
-      <p>Lavagem técnica, descontaminação, polimento em três etapas com remoção total de riscos, lixamento profundo, isolamento e vitrificação com proteção de três anos.</p>
-    </div>
-    <div class="servico">
-      <h3>Polimento Técnico e Vitrificação PRO 9H5Y</h3>
-      <p>Lavagem técnica, descontaminação de vidros e pintura, polimento em três etapas, detalhamento das partes pequenas, lixamento de arranhões profundos, isolamento e vitrificação com proteção de três anos, finalizando com lavagem de motor ou vitrificação de farol.</p>
-    </div>
+<main>
+<div class="container">
+<div class="services-container">
 
-    <div class="observacao">
-      Todas as informações citadas neste site são verdadeiras, mas para saber mais detalhes sobre cada serviço, consulte um de nós diretamente: pessoalmente, via Direct ou WhatsApp.
-    </div>
+<table class="services-table">
+<thead>
+<tr>
+<th>Serviço</th>
+<th>Função</th>
+</tr>
+</thead>
 
-  </div>
+<tbody>
 
-  <footer>
-    <p>© 2025 <a href="https://www.instagram.com/pintura_hidro_arts?igsh=MTZiNTl5MXlzeTMw" target="_blank">Instagram Pintura Hidro Arts</a></p>
-  </footer>
+<tr>
+<td class="service-name">Higienização Simples</td>
+<td class="service-function">
+Limpeza interna detalhada com escovação de bancos, painel, teto, carpete e portas, usando produto antibactericida e aspirador. Não desmonta o carro. Finaliza com aromatizante, deixando o interior limpo e saudável.
+</td>
+</tr>
+
+<tr>
+<td class="service-name">Higienização Plus</td>
+<td class="service-function">
+Limpeza completa interna com escovação, aspirador, desmontagem interna do carro, proteção dos plásticos e uso de vapor para eliminar fungos, bactérias e odores, finalizando com aromatizante.
+</td>
+</tr>
+
+<tr>
+<td class="service-name">Higienização de Motor</td>
+<td class="service-function">
+Limpeza detalhada do motor com aplicação de verniz de proteção.
+</td>
+</tr>
+
+<tr>
+<td class="service-name">Higienização Interna do Carro, Parte por Parte</td>
+<td class="service-function">
+• Teto: limpeza detalhada<br>
+• Carpete: limpeza detalhada ou removendo o carpete<br>
+• Plásticos: portas, colunas e painel<br>
+• Bancos: motorista e passageiros
+</td>
+</tr>
+
+<tr>
+<td class="service-name">Higienização de Rodas</td>
+<td class="service-function">
+Limpeza detalhada das rodas, removendo sujeira e resíduos acumulados.
+</td>
+</tr>
+
+<tr>
+<td class="service-name">Pretinho</td>
+<td class="service-function">
+Aplicação de pretinho nos pneus, com remoção de graxa ou lama pesada quando necessário, proporcionando acabamento limpo e visual renovado.
+</td>
+</tr>
+
+<tr>
+<td class="service-name">Micro Pintura</td>
+<td class="service-function">
+Retoque pontual de pintura em pequenas áreas, ideal para eliminar riscos leves ou manchas sem precisar repintar a peça inteira, preservando o acabamento original.
+</td>
+</tr>
+
+<tr>
+<td class="service-name">Pintura Completa Carro + Polimento</td>
+<td class="service-function">
+Serviço completo de pintura de carro, portas, para-lamas, para-choques, capô, teto, porta-malas e peças internas, incluindo polimento para uniformidade e acabamento de alta qualidade.
+</td>
+</tr>
+
+<tr>
+<td class="service-name">Restauração de Plástico</td>
+<td class="service-function">
+Limpeza e descontaminação de plásticos internos e externos, aplicação de produto restaurador e vitrificação, garantindo proteção e renovação por um ano.
+</td>
+</tr>
+
+<tr>
+<td class="service-name">Restauração de Vidros</td>
+<td class="service-function">
+Limpeza completa de todos os vidros com descontaminador de chuva ácida, proteção e acabamento interno e externo.
+</td>
+</tr>
+
+<tr>
+<td class="service-name">Pintura de Rodas (Caminhão, Carretas)</td>
+<td class="service-function">
+Pintura completa ou parcial das rodas, incluindo aro, cubo e personalizações, garantindo acabamento uniforme e aparência profissional.
+</td>
+</tr>
+
+<tr>
+<td class="service-name">Vitrificação de Farol</td>
+<td class="service-function">
+Polimento da lente e aplicação de proteção vitrificante, garantindo durabilidade e proteção de um ano.
+</td>
+</tr>
+
+<tr>
+<td class="service-name">Restauração de Farol</td>
+<td class="service-function">
+Lixamento progressivo da lente, isolamento e aplicação de proteção vitrificante, com garantia de um ano.
+</td>
+</tr>
+
+<tr>
+<td class="service-name">Restauração de Farol com Polimento</td>
+<td class="service-function">
+Lixamento progressivo e polimento do farol, isolamento e aplicação de polímero, com três anos de proteção.
+</td>
+</tr>
+
+<tr>
+<td class="service-name">Polimento de Rapatema (Casca de Laranja)</td>
+<td class="service-function">
+Lixamento progressivo, polimento técnico de todas as chapas, isolamento das borrachas e aplicação de selante com proteção de um ano, lavagem simples incluída.
+</td>
+</tr>
+
+<tr>
+<td class="service-name">Polimento Tanques</td>
+<td class="service-function">
+Polimento completo de tanques usando máquina e, quando necessário, Bombril, garantindo superfícies limpas e uniformes.
+</td>
+</tr>
+
+<tr>
+<td class="service-name">Polimento Espelhado Fora do Lugar</td>
+<td class="service-function">
+Tratamento de desgaste do alumínio com máquina, realizado fora da posição original do tanque, proporcionando acabamento espelhado e superfície uniforme.
+</td>
+</tr>
+
+<tr>
+<td class="service-name">Polimento Espelhado no Lugar</td>
+<td class="service-function">
+Desgaste do alumínio tratado com máquina, mantendo o tanque no local, ideal para recuperação de brilho sem remoção da peça.
+</td>
+</tr>
+
+<tr>
+<td class="service-name">Polimento Caminhão</td>
+<td class="service-function">
+Acabamento de superfícies de caminhões, incluindo lixamento quando necessário, aplicação de cera e polimento de áreas foscas, garantindo brilho uniforme e renovação da pintura.
+</td>
+</tr>
+
+<tr>
+<td class="service-name">Polimento Alumínio</td>
+<td class="service-function">
+Polimento detalhado de suportes de alumínio, tampas de mala e descarga, usando máquina, lixamento ou Bombril conforme a necessidade.
+</td>
+</tr>
+
+<tr>
+<td class="service-name">Polimento Rodas Alumínio</td>
+<td class="service-function">
+Polimento das rodas com máquina, à mão ou usando Bombril e lixa, incluindo restauração da roda espelhada.
+</td>
+</tr>
+
+<tr>
+<td class="service-name">Polimento Carreta</td>
+<td class="service-function">
+Polimento completo de carretas, cobrindo tetos altos e baixos, bicudas e novas superfícies, garantindo brilho uniforme e renovação da pintura.
+</td>
+</tr>
+
+</tbody>
+</table>
+
+<p class="obs">
+Todas as informações citadas neste site são verdadeiras, mas para saber mais detalhes sobre cada serviço, consulte um de nós diretamente: pessoalmente, via Direct ou WhatsApp.
+</p>
+
+</div>
+</div>
+</main>
+
+<footer>
+<p>© 2025 Todos os direitos reservados | PINTURA HIDRO ARTS</p>
+<p>@pintura_hidro_arts | +55 79 9938-4995</p>
+</footer>
 
 </body>
 </html>
